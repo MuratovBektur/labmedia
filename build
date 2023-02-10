@@ -1,0 +1,13 @@
+git pull;
+
+cd client;
+# build new container for build vue app
+docker build -f Dockerfile_build -t labmedia_build_client .;
+# run container
+docker run --name LabmediaBuildClient -itd labmedia_build_client;
+# copy from container's dist folder to local dist foler
+docker cp LabmediaBuildClient:/app/dist .
+# remove container after using;
+docker container rm -f LabmediaBuildClient;
+# remove image after using;
+docker rmi -f labmedia_build_client;
