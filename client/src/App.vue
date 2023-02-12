@@ -31,11 +31,6 @@
       </template>
       <UserTableNotFound v-else />
     </div>
-    <UserTableRemoveModal
-      v-if="modalState.show"
-      @onConfirm="onConfirmRemoveUser"
-      @onCancel="modalState.show = false"
-    />
   </div>
 </template>
 
@@ -55,7 +50,6 @@ import {
 
 import UserTable from "@/components/UserTable.vue";
 import UserTablePagination from "@/components/UserTablePagination.vue";
-import UserTableRemoveModal from "@/components/UserTableRemoveModal.vue";
 import UserTableSearchPanel from "@/components/UserTableSearchPanel.vue";
 import UserTableFetching from "@/components/UserTableFetching.vue";
 import UserTableNotFound from "@/components/UserTableNotFound.vue";
@@ -73,7 +67,6 @@ export default Vue.extend({
   components: {
     UserTable,
     UserTablePagination,
-    UserTableRemoveModal,
     UserTableSearchPanel,
     UserTableFetching,
     UserTableNotFound,
@@ -88,10 +81,6 @@ export default Vue.extend({
       isFetchedUserList: false,
       sort: null as TUserSort,
       searchText: "",
-      modalState: {
-        show: false,
-        userId: null as null | string,
-      },
     };
   },
   computed: {
@@ -160,15 +149,14 @@ export default Vue.extend({
       };
     },
     async onRemoveUser(userId: string) {
-      this.modalState.userId = userId;
-      this.modalState.show = true;
-    },
-    onConfirmRemoveUser() {
-      const userId = this.modalState.userId;
-      if (userId) {
+      const canDelete = await this.$dialogBox.confirm({
+        title: "Вы уверены, что хотите удалить пользователя?",
+        okText: "Да",
+        cancelText: "Нет",
+      });
+      if (canDelete) {
         this.removedUserListIds.push(userId);
       }
-      this.modalState.show = false;
     },
     onPrevPage() {
       if (this.page > 1) {
