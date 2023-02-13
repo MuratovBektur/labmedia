@@ -184,9 +184,8 @@ export default Vue.extend({
           // },
           data: {},
           headers: {
-            test: "123",
-            Accept: "application/json",
-            "content-type": "application/json",
+            Accept: "application/json; utf-8",
+            "content-type": "application/json; utf-8",
           },
         });
         return data.map((user) => ({
