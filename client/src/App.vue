@@ -39,6 +39,7 @@ import Vue from "vue";
 import axios from "axios";
 import sortBy from "@/helpers/sortBy";
 import formatDate from "@/helpers/formatDate";
+import api from "@/helpers/api";
 
 import {
   IUser,
@@ -175,15 +176,16 @@ export default Vue.extend({
       try {
         const url = "https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users";
         delete axios.defaults.headers.common["Accept-Encoding"];
-        const { data } = await axios.get<IUserFetched[]>(url, {
+        const { data } = await api.get<IUserFetched[]>(url, {
           // transformRequest: (data, headers) => {
           //   console.log("headers", headers);
           //   // delete headers.common["Accept-Encoding"];
           //   return data;
           // },
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-          },
+          // data: {},
+          // headers: {
+          //   "Content-Type": "pplication/json; charset=utf-8",
+          // },
         });
         return data.map((user) => ({
           ...user,
