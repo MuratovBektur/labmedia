@@ -182,7 +182,7 @@ export default Vue.extend({
           //   // delete headers.common["Accept-Encoding"];
           //   return data;
           // },
-          // data: {},
+          data: null,
           headers: {
             Accept: "application/json; utf-8",
             "content-type": "application/json; utf-8",
