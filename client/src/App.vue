@@ -182,7 +182,7 @@ export default Vue.extend({
           //   return data;
           // },
           headers: {
-            contentType: "application/json; charset=utf-8",
+            "Content-Type": "application/json; charset=utf-8",
           },
         });
         return data.map((user) => ({
