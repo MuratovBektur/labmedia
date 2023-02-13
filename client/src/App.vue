@@ -174,9 +174,15 @@ export default Vue.extend({
     async fetchUserList(): Promise<IUser[]> {
       try {
         const url = "https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users";
+        delete axios.defaults.headers.common["Accept-Encoding"];
         const { data } = await axios.get<IUserFetched[]>(url, {
+          // transformRequest: (data, headers) => {
+          //   console.log("headers", headers);
+          //   // delete headers.common["Accept-Encoding"];
+          //   return data;
+          // },
           headers: {
-            "Accept-Encoding": "gzip, compress",
+            contentType: "application/json; charset=utf-8",
           },
         });
         return data.map((user) => ({
