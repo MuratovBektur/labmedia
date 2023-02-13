@@ -182,10 +182,11 @@ export default Vue.extend({
           //   // delete headers.common["Accept-Encoding"];
           //   return data;
           // },
-          // data: {},
-          // headers: {
-          //   "Content-Type": "pplication/json; charset=utf-8",
-          // },
+          data: {},
+          headers: {
+            Accept: "application/json",
+            "content-type": "application/json",
+          },
         });
         return data.map((user) => ({
           ...user,
