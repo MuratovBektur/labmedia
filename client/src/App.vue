@@ -184,6 +184,7 @@ export default Vue.extend({
           // },
           data: {},
           headers: {
+            test: "123",
             Accept: "application/json",
             "content-type": "application/json",
           },
