@@ -174,7 +174,11 @@ export default Vue.extend({
     async fetchUserList(): Promise<IUser[]> {
       try {
         const url = "https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users";
-        const { data } = await axios.get<IUserFetched[]>(url);
+        const { data } = await axios.get<IUserFetched[]>(url, {
+          headers: {
+            "Accept-Encoding": "gzip, compress",
+          },
+        });
         return data.map((user) => ({
           ...user,
           registrationDateString: formatDate(user.registration_date),
