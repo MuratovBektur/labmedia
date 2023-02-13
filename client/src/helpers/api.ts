@@ -1,6 +1,6 @@
 import axios from "axios";
 const instance = axios.create({
-  data: {},
+  data: null,
   headers: {
     "Content-Type": "application/json",
   },
