@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+import "es6-promise/auto";
 import VuejsDialogBox from "@prostreyd/vue-dialog";
 import "@prostreyd/vue-dialog/dist/style.css";
 

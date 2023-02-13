@@ -12,6 +12,7 @@ export default function <T>(data: ISortBy<T>): Array<T> {
 
   const orderType = order === "asc" ? 1 : -1;
 
+  // eslint-disable-next-line
   list.sort((a: any, b: any) => {
     if (a?.[prop] > b?.[prop]) return orderType;
     else if (a?.[prop] < b?.[prop]) return -orderType;

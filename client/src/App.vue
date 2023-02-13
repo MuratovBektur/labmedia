@@ -182,6 +182,7 @@ export default Vue.extend({
         }));
       } catch (err) {
         const msg = "Fetch user list error:" + err;
+        // eslint-disable-next-line
         console.error(msg);
         throw msg;
       }
